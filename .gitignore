@@ -1,0 +1,21 @@
+# 在wwww同级目录下添加该.gitignore文件，taobao改为你的项目名
+/*
+!www/
+!*.md
+www/*
+!www/taobao/
+
+www/taobao/*
+#包含models文件夹
+!www/taobao/models/
+!www/taobao/admin/
+
+www/taobao/admin/*
+#包含cofig文件夹
+!www/taobao/admin/config/
+#包含controllers文件夹
+!www/taobao/admin/controllers/
+#包含views文件夹
+!www/taobao/admin/views/
+#排除css文件夹
+www/taobao/admin/views/css/*
