@@ -12,14 +12,9 @@ class ProductList extends BaseModel {
     public function rules() {
       
         return array(
-            array('product_code', 'required', 'message' => '{attribute} 不能为空'),
-            array('product_name', 'required', 'message' => '{attribute} 不能为空'),
-                
-            //array('price', 'required', 'message' => '{attribute} 不能为空'),
-            //array('product_count', 'required', 'message' => '{attribute} 不能为空'),
-         
-            array('product_code,product_name,product_img_url,product_detail,product_count,price,product_list_pic','safe',), 
-            //array($s1,'safe'),
+            array('product_name,shop_id,product_count,price,product_type', 'required', 'message' => '{attribute} 不能为空'),
+            array('product_img_url,product_detail','safe')
+ 
         );
     }
 
@@ -38,13 +33,13 @@ class ProductList extends BaseModel {
     public function attributeLabels() {
         return array(
             'id' => 'ID',
-            'product_code' => '商品编码',
             'product_name' => '商品名称',
+            'shop_id'=>'店铺id',
             'product_img_url' => '图片url',
             'product_detail' => '商品详细信息',
             'product_count' => '商品库存',
             'price' => '商品单价',
-
+            'product_type'=>'商品类型'
         );
     }
 
@@ -56,8 +51,4 @@ class ProductList extends BaseModel {
     }
     
     
-
-    public function getCode() {
-        return $this->findAll('1=1');
-    }
 }

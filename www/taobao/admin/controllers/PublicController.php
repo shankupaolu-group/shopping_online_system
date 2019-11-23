@@ -1,5 +1,5 @@
 <?php
-
+// 注意这里继承的不是BaseController,这里没有自定义layout文件
 class PublicController extends CController {
 
     public function actions() {

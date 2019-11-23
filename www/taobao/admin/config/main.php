@@ -6,11 +6,11 @@ $st="";
 
     $params['roleItem'] = array(
     array(
-     '服務機構',
+     '后台',
         array(
             'award_index41' => array('示例', 'clubList/index'),
             'product_index' => array('在售商品列表', 'productList/index'),
-            
+            'shop_index' => array('网店列表','shopList/index')
             ),
        ),
    
@@ -24,7 +24,7 @@ $main = array(
     'runtimePath' => ROOT_PATH . '/runtime/admin',
     'name' => '',
     'defaultController' => 'index',
-    'components' => array(
+    'components' => array(//重载$config['components']
         'db' => $config['components']['db'],
         'log' => array(
             'class' => 'CLogRouter',

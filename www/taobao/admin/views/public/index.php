@@ -1,4 +1,5 @@
 <div style="padding:15px;">
+<div class="btn">NMSL</div>
     <!--<div class="box-msg"><p><b>提示信息</b></p><p>网站以前正常显示，现在无法显示请清除缓存试试，<a href="#">【更新缓存】</a></p></div>-->
     <div class="box-info">
         <div class="box-info-hd"><b>服务器信息</b></div>

@@ -28,31 +28,11 @@
     </script>
 </head>
 <body>
-<div class="wrapper">
-    <div class="main">
-    <?php  $form = $this->beginWidget('CActiveForm', get_form_list()); ?>
-        <div class="item"><h1>网站后台登陆</h1></div>
-        <div class="item">
-            <?php echo $form->textField($model, 'username', array('maxlength' => 50, 'class' => 'user-input', 'placeholder'=>'用户名')); ?>
-            <?php echo $form->error($model, 'username', $htmlOptions = array()); ?>
-        </div><!--item end-->
-        <div class="item">
-            <?php echo $form->passwordField($model, 'password', array('class' => 'pwd-input', 'placeholder'=>'密码')); ?>
-            <?php echo $form->error($model, 'password', $htmlOptions = array()); ?>
-        </div><!--item end-->
-         <?php if(CCaptcha::checkRequirements()): ?>
-        <div class="item">
-            <?php echo $form->textField($model, 'verify', array('class' => 'verify-input', 'placeholder'=>'验证码')); ?>
-            <?php echo $form->error($model, 'verify', $htmlOptions = array()); ?>
-        </div><!--item end-->
-        <div class="item">
-            <?php $this->widget('CCaptcha', array('showRefreshButton'=>false, 'clickableImage'=>true, 'imageOptions'=>array('alt'=>'点击刷新', 'title'=>'点击刷新', 'style'=>'vertical-align:top;cursor:pointer;'))); ?>
-        </div><!--item end-->
-        <?php endif; ?>
-    <div class="item"><button class="btn btn-blue" type="submit">登陆</button></div><!--item end-->
-    <div class="item"></div><!--item end-->
-    <?php $this->endWidget(); ?>
-    </div><!--main end-->
-</div><!--wrapper end-->
+<span class="btn btn-blue">request->baseurl<?php echo Yii::app()->request->baseurl?></span>
+<span class="btn btn-blue">homeUrl<?php echo Yii::app()->homeUrl?></span>
+<span class="btn btn-blue">user->returnUrl<?php echo Yii::app()->user->returnUrl?></span>
+<span class="btn btn-blue">request->url<?php echo Yii::app()->request->url?></span>
+
+
 </body>
 </html>

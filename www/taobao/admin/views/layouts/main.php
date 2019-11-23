@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- 调用了main.php -->
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh-cn"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="zh-cn"><![endif]-->
 <!--[if IE 8]><html class="no-js lt-ie9" lang="zh-cn"><![endif]-->
@@ -41,7 +42,7 @@
 <?php $cs->registerCssFile($js_path.'/js/jquery.contextMenu/jquery.contextMenu.css');?>
 <?php $cs->registerScriptFile($js_path.'/js/jquery.contextMenu/jquery.ui.position.js');?>
 <?php $cs->registerScriptFile($js_path.'/js/jquery.contextMenu/jquery.contextMenu.js');?>
-<?php $cs->registerScriptFile($js_path.'/js/public.js');?>
+<?php $cs->registerScriptFile($js_path.'/js/public.js');//自定义的js?>
 
 <script charset="utf_8" src="<?php echo Yii::app()->request->baseUrl;?>/static/admin/js/PCASClass.js">
 </script>
@@ -54,6 +55,7 @@
 </script>
 </head>
 <body>
+    <div class="nav-bar fix-top"><h1 class="brand">Logo</h1></div>
 <?php echo $content;?>
 </body>
 </html>

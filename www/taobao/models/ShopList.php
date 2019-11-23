@@ -1,9 +1,8 @@
 <?php
 
-class Test extends BaseModel {
-    public $selectval=array(2);
+class ShopList extends BaseModel {
     public function tableName() {
-        return '{{test_err}}';
+        return '{{shop_list}}';
     }
 
     /**
@@ -11,8 +10,7 @@ class Test extends BaseModel {
      */
     public function rules() {
         return array(
-            array('f_msg', 'required', 'message' => '{attribute} 不能为空'),
-            array('f_msg','safe'), 
+           'shop_name,contact','required','{attribute}不能为空' 
         );
     }
 
@@ -27,14 +25,13 @@ class Test extends BaseModel {
      */
     public function attributeLabels() {
         return array(
-            'f_id' => 'ID',
-            'f_rcode' => '编码',
-            'f_rname' => '名称',
-            'f_type' => '类别',
-            'f_child' => '子角色',
-            'f_default' => '权限',
+            'id'=>'网店ID',
+            'shop_name'=>'网店名字',
+            'shop_contact'=>'网店联系方式',
+        
         );
     }
+
 
 
 
@@ -46,11 +43,8 @@ class Test extends BaseModel {
         return parent::model($className);
     }
 
-   public static function put_msg($pmsg) {
-        $this->isNewRecord = true;
-        $this->f_msg=$pmsg;
-        $this->save();
-    }
+
+        
 
 
     protected function beforeSave() {

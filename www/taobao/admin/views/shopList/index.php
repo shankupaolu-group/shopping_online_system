@@ -1,7 +1,11 @@
+<span class="btn btn-blue">request->baseurl<?php echo Yii::app()->request->baseurl?></span>
+<span class="btn btn-blue">homeUrl<?php echo Yii::app()->homeUrl?></span>
+<span class="btn btn-blue">user->returnUrl<?php echo Yii::app()->user->returnUrl?></span>
+<span class="btn btn-blue">request->url<?php echo Yii::app()->request->url?></span>
 <div class="box">
       <div class="box-content">
     	<div class="box-header">
-            <a class="btn" href="<?php echo $this->createUrl('create');?>"><i class="fa fa-plus"></i>添加单位</a>
+            <a class="btn" href="<?php echo $this->createUrl('create');?>"><i class="fa fa-plus"></i>添加商品</a>
             <a class="btn" href="javascript:;" onclick="we.reload();"><i class="fa fa-refresh"></i>刷新</a>
             <a style="display:none;" id="j-delete" class="btn" href="javascript:;" onclick="we.dele(we.checkval('.check-item input:checked'), deleteUrl);"><i class="fa fa-trash-o"></i>删除</a>
         </div><!--box-header end-->
@@ -10,7 +14,7 @@
                 <input type="hidden" name="r" value="<?php echo Yii::app()->request->getParam('r');?>">
                 <label style="margin-right:10px;">
                     <span>关键字：</span>
-                    <input style="width:200px;" class="input-text" type="text" name="keywords" value="<?php echo Yii::app()->request->getParam('keywords');?>">
+                    <input style="width:200px;" class="input-text" type="text" name="keywords" value="<?php echo Yii::app()->request->getParam('keywords');?>" placeholder="输入商品编号">
                 </label>
                 <button class="btn btn-blue" type="submit">查询</button>
             </form>
@@ -20,24 +24,20 @@
                 <thead>
                     <tr>
                         <th class="check"><input id="j-checkall" class="input-check" type="checkbox"></th>
-                        <th><?php echo $model->getAttributeLabel('club_code');?></th>
-                        <th><?php echo $model->getAttributeLabel('club_name');?></th>
-                        <th><?php echo $model->getAttributeLabel('club_address');?></th>
-                        <th><?php echo $model->getAttributeLabel('apply_name');?></th>
-                        <th><?php echo $model->getAttributeLabel('contact_phone');?></th>
+                        <th><?php echo $model->getAttributeLabel('id');?></th>
+                        <th><?php echo $model->getAttributeLabel('shop_name');?></th>
+                        <th><?php echo $model->getAttributeLabel('contact');?></th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                   	<?php foreach($arclist as $v){ ?>
                     <tr> 	
-                        <a href="index.php?r=clublist/update" id="123" >name</a>
                         <td class="check check-item"><input class="input-check" type="checkbox" value="<?php echo CHtml::encode($v->id); ?>"></td>           
-                        <td><?php echo CHtml::link($v->club_code, array('update', 'id'=>$v->id)); ?></td>
-                      <td><?php echo CHtml::link($v->club_name, array('update', 'id'=>$v->id)); ?></td>
-                        <td><?php  echo $v->club_address; ?></td>
-                        <td><?php  echo $v->apply_name;?></td>
-                        <td><?php echo $v->contact_phone; ?></td>
+                        <td><?php echo CHtml::link($v->id, array('update', 'id'=>$v->id)); ?></td>
+                        <td><?php echo CHtml::link($v->shop_name, array('update', 'id'=>$v->id)); ?></td>
+                        <td><?php echo CHtml::link($v->contact, array('update', 'id'=>$v->id)); ?></td>
+
                         <td>
                             <a class="btn" href="<?php echo $this->createUrl('update', array('id'=>$v->id));?>" title="编辑"><i class="fa fa-edit"></i></a>
                             <a class="btn" href="javascript:;" onclick="we.dele('<?php echo $v->id;?>', deleteUrl);" title="删除"><i class="fa fa-trash-o"></i></a>
