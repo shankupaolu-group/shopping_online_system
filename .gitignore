@@ -9,6 +9,10 @@ www/*
 www/taobao/*
 #包含models文件夹
 !www/taobao/models/
+
+#包含static文件夹
+!www/taobao/static/
+
 !www/taobao/admin/
 
 www/taobao/admin/*
