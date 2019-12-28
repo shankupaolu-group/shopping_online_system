@@ -54,24 +54,25 @@
 <!-- bootstrap4引入 -->
 <link rel="stylesheet" href="static/admin/css/bootstrap.min.css">
 <script src="static/admin/js/bootstrap.min.js"></script>
-
+<!-- 自定义样式 -->
+<?php $cs->registerCssFile('static/admin/css/mymain.css'); ?>
 <title>Homework</title>
 </head>
 
 <body>
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand mr-auto" href="<?= Yii::app()->homeUrl?>">网上商品营销系统</a>
 
   <span>
     <?
     if (isset($_SESSION['name']) && $_SESSION['name'] != null) {
-      echo CHtml::link($_SESSION['name'], ['index/person']); 
+      echo CHtml::link($_SESSION['name'], ['index/person'],['class'=>'navbar-text text-light']); 
       echo '&nbsp;';
-      echo CHtml::link('退出', ['index/logout']); 
+      echo CHtml::link('退出', ['index/logout'],['class'=>'navbar-text text-light']); 
     }else {
-      echo CHtml::link('登录', ['index/login']); 
+      echo CHtml::link('登录', ['index/login'], ['class'=>'navbar-text text-light']); 
       echo '&nbsp;';
-      echo CHtml::link('注册', ['index/register']); 
+      echo CHtml::link('注册', ['index/register'],['class'=>'navbar-text text-light']); 
     }
     ?>
   </span>

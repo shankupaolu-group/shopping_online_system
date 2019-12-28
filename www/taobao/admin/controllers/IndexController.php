@@ -8,9 +8,12 @@ class IndexController extends BaseController
     public function actionIndex()
     {
         set_cookie('_currentUrl_', Yii::app()->request->url);
+        
+        $model = ProductList::model();
+        $criteria = new CDbCriteria;//传入一个查询字典
+        $data = array();
+        parent::_list($model, $criteria, 'index', $data,8);
 
-        $view = isset($_GET['site']) ? $_GET['site'] : 'index';
-        $this->render($view);
     }
 
     public function actionLogin()
@@ -150,4 +153,6 @@ class IndexController extends BaseController
         //     } else { }
         // }
     }
+
+
 }
