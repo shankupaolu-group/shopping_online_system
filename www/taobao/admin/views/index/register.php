@@ -1,69 +1,34 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<div class="jumbotron shadow" style="max-width:600px;margin:auto;">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>注册页-OOX</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/reglog.css">
-   
-    <style>
-        #passstrength {
-            display: block;
-        }
-    </style>
-    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
-
-</head>
-
-<body>
-    <nav><a href="index.htm"><h1>OOX交易网站</h1></a></nav>
-    <div id="wrapper">
-        <div id="rec">
-            <h2>快速注册</h2>
-            <form action="register" method="POST" 
-        >
-                <div>
-                    <span>用户名&nbsp</span>
-                    <input type="text" maxlength=10 placeholder="请输入3-10个字符 " required>
-                </div>
-                <div>
-                    <span>注册邮箱&nbsp</span>
-                   <input type="email" placeholder="请输入你的邮箱账号 " required>
-                
-                </div>
-                <div>
-                    
-                    <span>创建新密码&nbsp</span>
-                    
-                    
-                        <input type="password" name="password" id="pass" placeholder="密码由数字、字母和下划线组成 " required>
-                   
-                    <div id="passstrength"></div>
-                </div>
-                <div class="bottom">
-                    <span>确认密码&nbsp</span>
-                    <input type="password" id="checkpass" placeholder="请再次输入密码 " required>
-                    <div id="diffpass"></div>
-                </div>
-                <div class="bar">已有账号<a href="login.htm">立即登录</a></div>
-
-                <div class="btn">
-                        <button id="submit">完成注册</button>
-                </div>
-
-                
-            </form>
-
-
-
-        </div>
+    <?php $form = $this->beginWidget('CActiveForm', get_form_register()); ?>
+    <div class="form-group">
+        <h1 class="text-center">快速注册</h1>
     </div>
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/content.js"></script>
-</body>
+    <div class="form-group">
+        <label for="User_username">用户名：</label>
+        <?php echo $form->textField($model, 'username', array('maxlength' => 50, 'class' => 'form-control', 'placeholder' => '用户名由字母数字和下划线组成')); ?>
+        <?php echo $form->error($model, 'username', $htmlOptions = ['class' => 'alert alert-info']); ?>
+    </div>
 
-
-</html>
+    <div class="form-group">
+        <label for="User_password">密码:</label>
+        <?= $form->passwordField($model, 'password', array('class' => 'form-control', 'placeholder' => '输入8到18位密码')); ?>
+        <?= $form->error($model, 'password', $htmlOptions = ['class' => 'alert alert-info']); ?>
+    </div>
+    <div class="form-group">
+        <label for="repeat_password">重复输入密码:</label>
+        <input class="form-control" placeholder="再次输入密码" name="repeat_pass" id="repeat_password" type="password">
+        
+    </div>
+    <!-- <div class="form-group">
+        登录类型：
+        <label><input type="radio" class="radio" name="login_type" value="1">用户</label>
+        <label><input type="radio" class="radio" name="login_type" value="2">网店管理员</label>
+        <label><input type="radio" class="radio" name="login_type" value="3">超级管理员</label>
+    </div> -->
+    <div class="form-group">
+        <input class="btn btn-primary btn-block" type="submit" value="立即注册">
+    </div>
+    <?php $this->endWidget(); ?>
+   
+</div>
