@@ -1,65 +1,30 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<div class="jumbotron shadow" style="max-width:600px;margin:auto;">
 
-
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/reglog.css">
-
-    <title>登录页-OOX交易网站</title>
-   
-
-</head>
-
-
-
-<body>
-    <nav><a href="index.htm"> <h1>OOX交易网站</h1></a></nav>
-    <div id="wrapper">
-        <div id="rec">
-
-
-            <h2>欢迎登录OOX网站</h2>
-            <form action="login" method="POST"
-            class="clearfix" >
-                <div><span class="input">
-                        <input name="account" type="email" placeholder="请输入登录用的邮箱号码" required>
-                    </span></div>
-                <div> <span class="input">
-                        <input name="password" type="password" placeholder="请输入密码" required>
-                    </span></div>
-                <div class="bar">
-                    <div class="left">
-                        还没有账号？<br>
-                        <a href="register.htm">点此注册</a>
-                    </div>
-                    <div class="right">
-                        <a href="reset.htm">忘记密码</a>
-                    </div>
-                </div>
-                <div class="btn">
-                        <button>立即登录</button>
-                </div>
-                
-
-            </form>
-        </div>
+    <?php $form = $this->beginWidget('CActiveForm', get_form_login()); ?>
+    <div class="form-group">
+        <h1 class="text-center">欢迎登录网上商品营销系统</h1>
+    </div>
+    <div class="form-group">
+        <label for="User_username">用户名：</label>
+        <?php echo $form->textField($model, 'username', array('maxlength' => 50, 'class' => 'form-control', 'placeholder' => '用户名由字母数字和下划线组成')); ?>
+        <?php echo $form->error($model, 'username', $htmlOptions = ['class' => 'alert alert-info']); ?>
     </div>
 
-<!-- 
-    <footer>
-        <small>Copyright © 2018 XXXXXXX All Rights Given up.</small>
-    </footer> -->
-    <script src="js/jquery-3.3.1.min.js "></script>
-    <script src="js/content.js "></script>
-</body>
+    <div class="form-group">
+        <label for="User_password">密码:</label>
+        <?= $form->passwordField($model, 'password', array('class' => 'form-control', 'placeholder' => '输入8到18位密码')); ?>
+        <?= $form->error($model, 'password', $htmlOptions = ['class' => 'alert alert-info']); ?>
+    </div>
 
-<script type="text/javascript" src="main.js"></script>
-</html>
+    <div class="form-group">
+        登录类型：
+        <label><input type="radio" class="radio" name="login_type" value="1" checked>用户</label>
+        <label><input type="radio" class="radio" name="login_type" value="2">网店管理员</label>
+        <label><input type="radio" class="radio" name="login_type" value="3">超级管理员</label>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary btn-block" type="submit" value="立即登录">
+    </div>
+    <?php $this->endWidget(); ?>
+   
+</div>

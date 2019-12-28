@@ -11,7 +11,7 @@
     $js_path = Yii::app()->request->baseUrl . '/static/admin'; ?>
     <?php $cs->registerCssFile($js_path . '/css/public.css'); ?>
     <?php $cs->registerCssFile($js_path . '/css/font.css');//font-awesome.css ?>
-    <?php $cs->registerCssFile($js_path . '/css/style.css'); ?>
+    <?php //$cs->registerCssFile($js_path . '/css/style.css'); ?>
     <?php $cs->registerCoreScript('jquery'); ?>
     <?php $cs->registerScriptFile($js_path . '/js/jquery.nicescroll.js'); ?>
 
@@ -52,8 +52,6 @@
     </script>
 
 <!-- bootstrap4引入 -->
-<link rel="stylesheet" href="static/admin/css/bootstrap-grid.min.css">
-<link rel="stylesheet" href="static/admin/css/bootstrap-reboot.min.css">
 <link rel="stylesheet" href="static/admin/css/bootstrap.min.css">
 <script src="static/admin/js/bootstrap.min.js"></script>
 
@@ -62,11 +60,20 @@
 
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand mr-auto" href="#">网上商品营销系统</a>
+  <a class="navbar-brand mr-auto" href="<?= Yii::app()->homeUrl?>">网上商品营销系统</a>
 
   <span>
-    <a href="#"><i class="fa fa-user"></i>登录</a>&nbsp;
-    <a href="#">注册</a>
+    <?
+    if (isset($_SESSION['name']) && $_SESSION['name'] != null) {
+      echo CHtml::link($_SESSION['name'], ['index/person']); 
+      echo '&nbsp;';
+      echo CHtml::link('退出', ['index/logout']); 
+    }else {
+      echo CHtml::link('登录', ['index/login']); 
+      echo '&nbsp;';
+      echo CHtml::link('注册', ['index/register']); 
+    }
+    ?>
   </span>
 
   </div>
