@@ -24,6 +24,24 @@ class IndexController extends BaseController
     public function actionPerson()
     { }
 
+    public function actionDetail() {
+        $pid = $_GET['id'];
+        $product = ProductList::model()->find("id='".$pid."'");
+        $model = '';
+        $shop_id = $product->shop_id;
+        $shopName = ShopList::model()->find("id='".$shop_id."'")['shop_name'];
+        $data = [
+            'pid'=>$pid,
+            'shop_name'=>$shopName,
+            'price'=>$product['price'],
+            'product_name'=>$product['product_name'],
+            'product_img_url'=>$product['product_img_url'],
+            'product_detail'=>$product['product_detail'],
+            'product_count'=>$product['product_count'],
+            'product_type'=>$product['product_type']
+        ];
+        $this->render('detail', $data);
+        }
     public function actionLogout()
     {
         $_SESSION['name'] = null;
@@ -84,6 +102,26 @@ class IndexController extends BaseController
     }
 
 
+    public function actionAddToCart() {
+        if (Yii::app()->request->isAjaxRequest) {
+            if (isset($_SESSION['id']) && $_SESSION['id'] != null) {
+                $model = new Shopping_cart('create');
+                $model->id = $_SESSION['id'];
+                $model->product_id = $_REQUEST['product_id'];
+                $model->buy_num = $_REQUEST['buy_num'];
+                if ($model->save()) {
+                    ajax_status(1, '加入购物车成功');
+                } else {
+                    ajax_status(0, "加入购物车失败");
+                }
+               
+            } else {
+                ajax_status(0, "登录后才能操作= ^ =!!!",'index.php?r=index/login');
+            }
+        } else {
+            $this->redirect(Yii::app()->request->urlReferrer);
+        }
+    }
 
     // 注册用户
     public function actionRegister()

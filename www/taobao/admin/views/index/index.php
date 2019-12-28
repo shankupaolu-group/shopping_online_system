@@ -12,12 +12,13 @@
 
 <?php foreach($arclist as $v){ ?>
 
-<a href="index.php?r=product/detail&id=<?= $v['id'] ?>">
+<a href="index.php?r=index/detail&id=<?= $v['id'] ?>">
   <div class="card">
     <img src="<?= $v['product_img_url']?>" alt="" class="card-img">
     <div class="card-body">
       <div class="card-title text-center price" title="商品价格">￥<?= $v['price'] ?>元</div>
       <div class="card-subtitle text-center product_name" title="商品名称"><?= $v['product_name'] ?> </span></div>
+ 
     </div>
   </div>
 </a>

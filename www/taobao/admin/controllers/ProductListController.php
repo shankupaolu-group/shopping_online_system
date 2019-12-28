@@ -55,4 +55,6 @@ class ProductListController extends BaseController {
         parent::_list($model, $criteria, 'index', $data);
     }
 
+
+
 }

@@ -7,9 +7,10 @@ class User extends BaseModel {
         return parent::model($className);
     }
     public function rules() {
-        return array(
-            'password,username,recv_addr','required','{attribute}不能为空'
-        );
+        return [
+            ['password,username','required','message'=>'{attribute}不能为空'],
+            ['recv_addr','safe']
+        ];
     }
     public function attributeLabels()
     {

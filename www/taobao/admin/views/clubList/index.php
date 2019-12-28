@@ -46,8 +46,20 @@
 					<?php } ?>
                 </tbody>
             </table>
-        </div><!--box-table end-->
-        <div class="box-page c"><?php $this->page($pages); ?></div>
+        </div>
+  <?php 
+    $this->widget('MyLinkPager', array(
+        'pages' => $pages,
+        'cssFile' => false,
+        'header' => '',
+        'footer' => '<div class="justify-content-center my-2">共' . $pages->getItemCount() . '条内容，当前第' . ($pages->currentPage + 1) . '/' . $pages->pageCount . '页</div>',
+        'maxButtonCount' => 5,
+        'firstPageLabel' => '首页',
+        'prevPageLabel' => '上一页',
+        'nextPageLabel' => '下一页',
+        'lastPageLabel' => '末页'
+    ));
+  ?>
     </div><!--box-content end-->
 </div><!--box end-->
 <script>
