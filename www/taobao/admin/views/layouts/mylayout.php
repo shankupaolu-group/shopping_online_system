@@ -79,7 +79,7 @@
 
   </div>
 </nav>
-<div class="container" style="margin-top:5rem;">
+<div style="margin-top:5rem;">
     <?php echo $content; ?>
 </div>
 </body>

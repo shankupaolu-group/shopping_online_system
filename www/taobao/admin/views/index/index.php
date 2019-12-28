@@ -1,7 +1,8 @@
+<div class="container">
 <div class="my-2">
-  <form action="<?php echo  Yii::app()->request->url ?>" class="form-inline">
+  <form action="<?= Yii::app()->request->url ?>" class="form-inline">
 
-    <input type=" text" placeholder="请输入你要查询的商品名称" name="keyword" class="form-control mr-2">
+    <input type="text" placeholder="请输入你要查询的商品名称" name="keyword" class="form-control mr-2">
 
     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>立即搜索</button>
   </form>
@@ -42,3 +43,4 @@
    
 </nav>
 
+</div>

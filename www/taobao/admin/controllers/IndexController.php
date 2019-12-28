@@ -8,10 +8,14 @@ class IndexController extends BaseController
     public function actionIndex()
     {
         set_cookie('_currentUrl_', Yii::app()->request->url);
-        
         $model = ProductList::model();
         $criteria = new CDbCriteria;//传入一个查询字典
-        $data = array();
+
+        if (isset($_GET['keyword']) && $_GET['keyword'] != null) {
+            $criteria->condition = "product_name LIKE '".$_GET['keyword']."'";
+            $criteria->order="price";
+        }
+        $data = [];
         parent::_list($model, $criteria, 'index', $data,8);
 
     }
@@ -21,6 +25,10 @@ class IndexController extends BaseController
         $this->login_form();
     }
 
+    public function actionUser() 
+    {
+        $this->render('user');
+    }
     public function actionPerson()
     { }
 
